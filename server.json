@@ -1,27 +1,23 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.Kochava/kochava-for-advertisers-mcp-server",
+  "title": "Kochava for Advertisers",
   "description": "Kochava for Advertisers — mobile attribution, campaign analytics, and free account signup",
   "repository": {
     "url": "https://github.com/Kochava/kochava-k4a-mcp-server",
     "source": "github"
   },
   "version": "1.0.44",
-  "packages": [
+  "remotes": [
     {
-      "registryType": "remote",
-      "identifier": "kochava-for-advertisers-mcp-server",
-      "transport": {
-        "type": "streamable-http",
-        "url": "https://analytics.mcp.kochava.com/mcp"
-      },
-      "environmentVariables": [
+      "type": "streamable-http",
+      "url": "https://analytics.mcp.kochava.com/mcp",
+      "headers": [
         {
           "name": "authentication-key",
           "description": "Your Kochava API key. Leave empty to use FAA signup tools to create a free account and receive a key in-session.",
           "isRequired": false,
-          "isSecret": true,
-          "format": "string"
+          "isSecret": true
         }
       ]
     }
