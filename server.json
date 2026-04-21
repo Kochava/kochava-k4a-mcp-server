@@ -11,9 +11,9 @@
     {
       "registryType": "remote",
       "identifier": "kochava-for-advertisers-mcp-server",
-      "url": "https://analytics.mcp.kochava.com/mcp",
       "transport": {
-        "type": "streamable-http"
+        "type": "streamable-http",
+        "url": "https://analytics.mcp.kochava.com/mcp"
       },
       "environmentVariables": [
         {
