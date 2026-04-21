@@ -7,7 +7,7 @@
     "url": "https://github.com/Kochava/kochava-k4a-mcp-server",
     "source": "github"
   },
-  "version": "1.0.44",
+  "version": "1.0.45",
   "remotes": [
     {
       "type": "streamable-http",
