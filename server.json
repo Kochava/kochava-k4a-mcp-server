@@ -1,13 +1,13 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.Kochava/kochava-for-advertisers-mcp-server",
-  "title": "Kochava for Advertisers",
+  "title": "Kochava for Advertisers — Official MCP Server",
   "description": "No account needed — connect, sign up, and query mobile attribution data from any AI tool",
   "repository": {
     "url": "https://github.com/Kochava/kochava-k4a-mcp-server",
     "source": "github"
   },
-  "version": "1.0.44",
+  "version": "1.0.45",
   "remotes": [
     {
       "type": "streamable-http",
