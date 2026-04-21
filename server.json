@@ -1,7 +1,7 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.kochava/kochava-for-advertisers-mcp-server",
-  "description": "Kochava Analytics MCP Server. Query mobile attribution data, campaign performance, trackers, segments, and reports. Free App Analytics (FAA) account creation built-in — no Kochava account needed to get started.",
+  "description": "Kochava for Advertisers — mobile attribution, campaign analytics, and free account signup",
   "repository": {
     "url": "https://github.com/Kochava/kochava-k4a-mcp-server",
     "source": "github"
@@ -10,6 +10,7 @@
   "packages": [
     {
       "registryType": "remote",
+      "identifier": "kochava-for-advertisers-mcp-server",
       "url": "https://analytics.mcp.kochava.com/mcp",
       "transport": {
         "type": "streamable-http"
