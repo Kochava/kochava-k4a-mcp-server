@@ -151,3 +151,8 @@ Add to `.vscode/mcp.json`:
 
 - **Email**: support@freeappanalytics.com
 - **Console**: [console.kochava.com](https://console.kochava.com)
+
+
+[![MCP Badge](https://lobehub.com/badge/mcp/kochava-kochava-k4a-mcp-server)](https://lobehub.com/mcp/kochava-kochava-k4a-mcp-server)
+
+<!-- smithery-verification=96309c88075d1d87e141dfb766db8b75e736ac13f39824dc7a00a03eb4dadc6b -->
