@@ -1,5 +1,7 @@
 # Kochava for Advertisers — MCP Server
 
+[![MCP Badge](https://lobehub.com/badge/mcp/kochava-kochava-k4a-mcp-server)](https://lobehub.com/mcp/kochava-kochava-k4a-mcp-server)
+
 Kochava for Advertisers is the Omnichannel measurement and attribution platform provided by Kochava, incorporating last-click attribution, incrementality, and MMM tools for brands and their agencies.
 
 This MCP server lets any AI tool query live Kochava attribution data, manage campaigns, and create reports — with **no existing account required**. Connect, create a free account in-session, and start querying immediately.
@@ -152,7 +154,5 @@ Add to `.vscode/mcp.json`:
 - **Email**: support@freeappanalytics.com
 - **Console**: [console.kochava.com](https://console.kochava.com)
 
-
-[![MCP Badge](https://lobehub.com/badge/mcp/kochava-kochava-k4a-mcp-server)](https://lobehub.com/mcp/kochava-kochava-k4a-mcp-server)
 
 <!-- smithery-verification=96309c88075d1d87e141dfb766db8b75e736ac13f39824dc7a00a03eb4dadc6b -->
