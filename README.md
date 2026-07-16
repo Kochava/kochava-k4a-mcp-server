@@ -23,22 +23,24 @@ Once you have your API key, set it as the `authentication-key` header and the fu
 
 ### Claude Desktop
 
-Add to `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS) or `~/.config/claude/claude_desktop_config.json` (Linux):
+Add to `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS) or `~/.config/claude/claude_desktop_config.json` (Linux), or via Settings → Developer → Edit Config in the app:
 
 ```json
 {
   "mcpServers": {
     "kochava": {
-      "url": "https://analytics.mcp.kochava.com/mcp",
-      "headers": {
-        "authentication-key": "YOUR_API_KEY"
-      }
+      "command": "npx",
+      "args": [
+        "-y", "mcp-remote",
+        "https://analytics.mcp.kochava.com/mcp",
+        "--header", "authentication-key:YOUR_API_KEY"
+      ]
     }
   }
 }
 ```
 
-Leave `authentication-key` empty or omit the `headers` block entirely to start with FAA signup tools only.
+Requires Node.js (for `npx`). Leave `authentication-key` empty or omit the `--header` argument entirely to start with FAA signup tools only. Fully quit and reopen Claude Desktop after saving for the change to take effect.
 
 ### Claude Code
 
