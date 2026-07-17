@@ -45,14 +45,29 @@ Requires Node.js (for `npx`). Leave `authentication-key` empty or omit the `--he
 ### Claude Code
 
 ```bash
-claude mcp add kochava --transport streamable-http https://analytics.mcp.kochava.com/mcp
+claude mcp add kochava --transport streamable-http https://analytics.mcp.kochava.com/mcp --header "authentication-key: YOUR_API_KEY"
 ```
+
+Omit the `--header` argument entirely to start with FAA signup tools only.
 
 ### Cursor
 
-Settings → MCP → Add Server:
-- **URL**: `https://analytics.mcp.kochava.com/mcp`
-- **Header**: `authentication-key: YOUR_API_KEY`
+Settings → Tools & MCPs → Add Custom MCP, which opens `~/.cursor/mcp.json` (or `.cursor/mcp.json` in a project) for editing:
+
+```json
+{
+  "mcpServers": {
+    "kochava": {
+      "url": "https://analytics.mcp.kochava.com/mcp",
+      "headers": {
+        "authentication-key": "YOUR_API_KEY"
+      }
+    }
+  }
+}
+```
+
+Leave `authentication-key` empty or omit the `headers` block entirely to start with FAA signup tools only.
 
 ### VS Code / GitHub Copilot
 
