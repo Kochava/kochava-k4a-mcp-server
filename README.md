@@ -13,7 +13,7 @@ You don't need a Kochava account to get started. The server includes two **publi
 1. **`kochava_free_app_analytics_get_tos`** — Review the Free App Analytics Terms of Service
 2. **`kochava_free_app_analytics_create_acc_and_get_auth_key`** — Create a free account and receive your API key instantly, right in the conversation
 
-Once you have your API key, set it as the `authentication-key` header and the full suite of 30 tools becomes available.
+Once you have your API key, set it as the `authentication-key` header and the full suite of 50 tools becomes available.
 
 ## Connect
 
@@ -23,7 +23,11 @@ Once you have your API key, set it as the `authentication-key` header and the fu
 
 ### Claude Desktop
 
-Add to `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS) or `~/.config/claude/claude_desktop_config.json` (Linux), or via Settings → Developer → Edit Config in the app:
+Edit the config file directly — there's no in-app "Edit Config" shortcut:
+
+- macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
+- Windows: `%APPDATA%\Claude\claude_desktop_config.json`
+- Linux (beta): `~/.config/claude/claude_desktop_config.json`
 
 ```json
 {
@@ -40,7 +44,7 @@ Add to `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS)
 }
 ```
 
-Requires Node.js (for `npx`). Leave `authentication-key` empty or omit the `--header` argument entirely to start with FAA signup tools only. Fully quit and reopen Claude Desktop after saving for the change to take effect.
+Requires Node.js (for `npx`). Leave `authentication-key` empty or omit the `--header` argument entirely to start with FAA signup tools only. Fully quit and reopen Claude Desktop after saving for the change to take effect — the connector then shows up under **Customize → Connectors**, where you can review its tool permissions.
 
 ### Claude Code
 
@@ -71,13 +75,13 @@ Leave `authentication-key` empty or omit the `headers` block entirely to start w
 
 ### VS Code / GitHub Copilot
 
-Add to `.vscode/mcp.json`:
+**Per-project (recommended to start):** add to `.vscode/mcp.json` in your project root:
 
 ```json
 {
   "servers": {
     "kochava": {
-      "type": "streamable-http",
+      "type": "http",
       "url": "https://analytics.mcp.kochava.com/mcp",
       "headers": {
         "authentication-key": "YOUR_API_KEY"
@@ -87,7 +91,31 @@ Add to `.vscode/mcp.json`:
 }
 ```
 
+A **Start** button appears above the `kochava` entry directly in the editor — click it to connect, then ask Copilot Chat (in **Agent** mode) something like "list my kochava campaigns" to confirm it's working.
+
+**Available in every project (user-level):** add the same server to `~/.copilot/mcp-config.json` instead, using the `mcpServers` key:
+
+```json
+{
+  "mcpServers": {
+    "kochava": {
+      "type": "http",
+      "url": "https://analytics.mcp.kochava.com/mcp",
+      "headers": {
+        "authentication-key": "YOUR_API_KEY"
+      }
+    }
+  }
+}
+```
+
+This shows up under **User** when you run **Chat: Open Customizations → MCP Servers** from the Command Palette, separately from any per-project **Workspace** servers.
+
+> **Note:** `.vscode/mcp.json`'s `servers` format is VS Code's older, editor-managed MCP support and still works today, but VS Code has marked it for removal in February 2027 in favor of the native `mcpServers` format shown above. Either works now; new setups can use either, but the `~/.copilot/mcp-config.json` form is the one VS Code is standardizing on.
+
 ## Tools
+
+50 tools total: 31 read-only, 19 write or delete (create/update/delete operations, plus two backfill tools that re-ingest cost data over a date range).
 
 ### Free App Analytics (no auth required)
 
@@ -119,6 +147,16 @@ Add to `.vscode/mcp.json`:
 | `execute_report_query` | Execute a report query |
 | `get_query_results` | Get results from an executed query |
 
+### App Management
+
+| Tool | Description |
+|------|-------------|
+| `kochava_create_app` | Create a new app in your advertiser account |
+| `kochava_get_app_settings` | Get an app's SDK key and session tracking settings |
+| `kochava_update_app` | Update an existing app's settings |
+| `kochava_get_app_group_memberships` | List the App Groups an app belongs to |
+| `kochava_update_app_groups` | Change which App Groups an app belongs to |
+
 ### Campaign Management
 
 | Tool | Description |
@@ -127,6 +165,13 @@ Add to `.vscode/mcp.json`:
 | `kochava_get_campaign` | Get campaign details |
 | `kochava_create_campaign` | Create a new campaign |
 | `kochava_update_campaign` | Update an existing campaign |
+
+### Event Management
+
+| Tool | Description |
+|------|-------------|
+| `kochava_create_event` | Create a new event |
+| `kochava_update_event` | Update an event, or remap it |
 
 ### Tracker Management
 
@@ -149,11 +194,49 @@ Add to `.vscode/mcp.json`:
 | `kochava_create_segment` | Create a new segment |
 | `kochava_update_segment` | Update an existing segment |
 
+### Postback Configuration
+
+| Tool | Description |
+|------|-------------|
+| `kochava_list_postback_templates` | List available postback templates for an app |
+| `kochava_configure_postback` | Create or update a postback trigger for a network |
+| `kochava_get_partner_configuration` | Get which events are shared with a partner network |
+
+### Attribution Windows
+
+| Tool | Description |
+|------|-------------|
+| `kochava_get_attribution_windows` | Get attribution reconciliation window settings |
+| `kochava_set_attribution_windows` | Set attribution reconciliation window settings |
+
+### SmartLinks
+
+| Tool | Description |
+|------|-------------|
+| `kochava_list_app_groups` | List App Groups, or find the ones containing an app |
+| `kochava_list_smartlink_networks` | List networks eligible for SmartLink use |
+| `kochava_create_smartlink` | Create a SmartLink |
+
+### Fraud
+
+| Tool | Description |
+|------|-------------|
+| `kochava_get_fraud_config` | Get an account's fraud blacklist/whitelist entries |
+
+### Cost Data
+
+| Tool | Description |
+|------|-------------|
+| `kochava_list_cost_configurations` | List an account's configured cost data connectors |
+| `kochava_trigger_cost_backfill` | Trigger a cost data backfill over a date range |
+| `kochava_get_cost_backfill_status` | Get the latest cost data backfill status |
+| `kochava_recover_cost_backfill` | Retry the unrecovered dates of a finished cost backfill |
+
 ## Authentication
 
 **Without a key**: You can connect and use the two FAA signup tools to create a free account. Your API key is returned immediately in the conversation.
 
-**With a key**: Set the `authentication-key` header to your Kochava API key. All 30 tools become available.
+**With a key**: Set the `authentication-key` header to your Kochava API key. All 50 tools become available.
 
 **Free App Analytics** gives you 30 days of data retention. Upgrade to Enterprise for unlimited retention — same API key, same MCP connection, zero migration.
 
