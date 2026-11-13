@@ -56,7 +56,7 @@ Omit the `--header` argument entirely to start with FAA signup tools only.
 
 ### Cursor
 
-Settings → Tools & MCPs → Add Custom MCP, which opens `~/.cursor/mcp.json` (or `.cursor/mcp.json` in a project) for editing:
+**Customize** (left sidebar) → **MCPs** tab → **New MCP Server** → **Add a Custom MCP Server**, which opens `~/.cursor/mcp.json` (or `.cursor/mcp.json` in a project) for editing:
 
 ```json
 {
@@ -71,7 +71,7 @@ Settings → Tools & MCPs → Add Custom MCP, which opens `~/.cursor/mcp.json` (
 }
 ```
 
-Leave `authentication-key` empty or omit the `headers` block entirely to start with FAA signup tools only.
+Leave `authentication-key` empty or omit the `headers` block entirely to start with FAA signup tools only. No `type` field is needed — Cursor connects over Streamable HTTP without one, confirmed hands-on (shows up as **Connected** with all 50 tools enabled).
 
 ### VS Code / GitHub Copilot
 
