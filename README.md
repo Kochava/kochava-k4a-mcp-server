@@ -52,7 +52,7 @@ Requires Node.js (for `npx`). Leave `authentication-key` empty or omit the `--he
 claude mcp add kochava --transport streamable-http https://analytics.mcp.kochava.com/mcp --header "authentication-key: YOUR_API_KEY"
 ```
 
-Omit the `--header` argument entirely to start with FAA signup tools only.
+Omit the `--header` argument entirely to start with FAA signup tools only. Run `claude mcp get kochava` afterward to confirm — it should report `Status: ✔ Connected`.
 
 ### Cursor
 
