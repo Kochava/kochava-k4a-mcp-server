@@ -54,6 +54,8 @@ claude mcp add kochava --transport streamable-http https://analytics.mcp.kochava
 
 Omit the `--header` argument entirely to start with FAA signup tools only. Run `claude mcp get kochava` afterward to confirm — it should report `Status: ✔ Connected`.
 
+This adds the server to the **current project only** (`claude mcp add` defaults to `-s local` scope). To use it from any directory, add `-s user` to the command instead.
+
 ### Cursor
 
 **Customize** (left sidebar) → **MCPs** tab → **New MCP Server** → **Add a Custom MCP Server**, which opens `~/.cursor/mcp.json` (or `.cursor/mcp.json` in a project) for editing:
